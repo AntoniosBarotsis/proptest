@@ -20,6 +20,8 @@
 //! `rand` crate directly will not provide insulation from the upcoming
 //! revision to the `rand` crate.
 
+pub use paste::paste;
+
 pub use crate::arbitrary::{any, any_with, Arbitrary};
 pub use crate::strategy::{BoxedStrategy, Just, SBoxedStrategy, Strategy};
 pub use crate::test_runner::Config as ProptestConfig;

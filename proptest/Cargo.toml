@@ -29,7 +29,13 @@ attr-macro = ["proptest-macro"]
 unstable = []
 
 # Enables the use of standard-library dependent features
-std = ["rand/std", "rand/os_rng", "lazy_static", "regex-syntax", "num-traits/std"]
+std = [
+  "rand/std",
+  "rand/os_rng",
+  "lazy_static",
+  "regex-syntax",
+  "num-traits/std",
+]
 
 # std or libm required for mul_add.
 no_std = ["num-traits/libm"]
@@ -77,6 +83,7 @@ rand_chacha = { workspace = true }
 rusty-fork = { workspace = true, optional = true }
 tempfile = { workspace = true, optional = true }
 x86 = { workspace = true, optional = true }
+paste = { workspace = true }
 
 [package.metadata.docs.rs]
 all-features = true

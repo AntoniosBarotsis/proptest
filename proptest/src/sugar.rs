@@ -154,30 +154,34 @@ macro_rules! proptest {
         $(#[$meta:meta])*
        fn $test_name:ident($($parm:pat in $strategy:expr),+ $(,)?) $body:block
     )*) => {
+        paste! {
         $(
             $(#[$meta])*
-            fn $test_name() {
+            fn [<aGVsbG8gd29ybGQ_ $test_name>]() {
                 let mut config = $crate::test_runner::contextualize_config($config.clone());
                 config.test_name = Some(
                     concat!(module_path!(), "::", stringify!($test_name)));
                 $crate::proptest_helper!(@_BODY config ($($parm in $strategy),+) [] $body);
             }
         )*
+    }
     };
     (#![proptest_config($config:expr)]
      $(
         $(#[$meta:meta])*
         fn $test_name:ident($($arg:tt)+) $body:block
     )*) => {
+        paste! {
         $(
             $(#[$meta])*
-            fn $test_name() {
+            fn [<aGVsbG8gd29ybGQ_ $test_name>]() {
                 let mut config = $crate::test_runner::contextualize_config($config.clone());
                 config.test_name = Some(
                     concat!(module_path!(), "::", stringify!($test_name)));
                 $crate::proptest_helper!(@_BODY2 config ($($arg)+) [] $body);
             }
         )*
+        }
     };
 
     ($(
